@@ -16,6 +16,7 @@ function Login() {
   const handleFinish = async (values) => {
     try {
       const result = await axios.post(`${process.env.REACT_APP_URL}/getuser`, values);
+      console.log(result,"Wjeu")
       localStorage.setItem("token", result.data.token);
       fetchData()
     } catch (err) {

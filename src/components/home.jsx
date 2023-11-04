@@ -16,15 +16,19 @@ function Home() {
   const [User, setUser] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [dummy, setDummy] = useState(false);
 
   const fetchData = async () => {
     try {
       const token = localStorage.getItem("token");
-      const result = await axios.get(`${process.env.REACT_APP_URL}/validateToken`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const result = await axios.get(
+        `${process.env.REACT_APP_URL}/validateToken`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       const result1 = await axios.get(`${process.env.REACT_APP_URL}/allusers`);
       setData(result1.data.message);
       dispatch(changeUservalues(result.data));
@@ -50,14 +54,15 @@ function Home() {
           return res._id === user?.userId;
         })
     );
-  }, [data, user]);
+  }, [data, user, localStorage.getItem("token")]);
 
   const handleLogout = () => {
     dispatch(changeUservalues({}));
-    Cookies.remove("token");
-    navigate("/login");
+    localStorage.removeItem("token");
+    setDummy(true);
   };
 
+  console.log(user, "erknekjrkjen");
   const columns = [
     {
       title: "FirstName",
@@ -85,23 +90,26 @@ function Home() {
     <div>
       <div className="bg-blue-700 text-white flex justify-between px-5 py-2">
         <div>Logo</div>
-        <Button className="!text-md !text-white" onClick={handleLogout}>
-          <ExitToAppIcon />
-          Logout
-        </Button>
+        {user === undefined||dummy ? (
+          <Button className="!text-md !text-white" onClick={()=>{navigate("/login")}} >
+            <ExitToAppIcon />
+            Login
+          </Button>
+        ) : (
+          <Button className="!text-md !text-white"   onClick={handleLogout}>
+            <ExitToAppIcon />
+            Logout
+          </Button>
+        )}
       </div>
       {isLoading ? (
         <div className="flex gap-2 items-center justify-center h-screen text-xl bg-black/10 shadow-md">
           <Spin spinning={isLoading} />
-          <div >
-            Loading...
-          </div>
+          <div>Loading...</div>
         </div>
-      ) :
-      (
+      ) : (
         <Table dataSource={User} columns={columns} pagination={false} />
-      )
-}
+      )}
     </div>
   );
 }
