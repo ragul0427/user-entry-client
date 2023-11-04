@@ -21,7 +21,7 @@ function Login() {
       notification.success({message:"Lets continue..."})
       fetchData()
     } catch (err) {
-      console.log(err.response.data.message);
+      console.log(err);
       if(err.response.data.message=="Password is incorrect"){
         notification.error({message:err.response.data.message})
       }

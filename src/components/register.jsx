@@ -7,8 +7,6 @@ import axios from "axios";
 function Register() {
   const [form] = Form.useForm();
   const navigate = useNavigate();
-  const [password, setPassword] = useState("");
-  //   const dispatch = useDispatch();
 
   const handleFinish = async (values) => {
     try {
@@ -119,9 +117,7 @@ function Register() {
                 type="password"
                 placeholder="Password"
                 size="large"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
+                
               />
             </Form.Item>
             <Form.Item
