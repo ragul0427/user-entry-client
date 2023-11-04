@@ -15,7 +15,7 @@ function Login() {
 
   const handleFinish = async (values) => {
     try {
-      const result = await axios.post("http://localhost:8080/getuser", values);
+      const result = await axios.post(`${process.env.REACT_APP_URL}/getuser`, values);
       localStorage.setItem("token", result.data.token);
       fetchData()
     } catch (err) {
@@ -41,7 +41,7 @@ function Login() {
 
     try {
       const result = await axios.get(
-        `http://localhost:8080/validateToken`,
+        `${process.env.REACT_APP_URL}/validateToken`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

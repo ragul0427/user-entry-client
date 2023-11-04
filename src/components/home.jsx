@@ -20,12 +20,12 @@ function Home() {
   const fetchData = async () => {
     try {
       const token = localStorage.getItem("token");
-      const result = await axios.get(`http://localhost:8080/validateToken`, {
+      const result = await axios.get(`${process.env.REACT_APP_URL}/validateToken`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      const result1 = await axios.get("http://localhost:8080/allusers");
+      const result1 = await axios.get(`${process.env.REACT_APP_URL}/allusers`);
       setData(result1.data.message);
       dispatch(changeUservalues(result.data));
       if (!isEmpty(result.data)) {
