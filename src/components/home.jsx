@@ -54,6 +54,10 @@ function Home() {
           return res._id === user?.userId;
         })
     );
+
+    if (isEmpty(localStorage.getItem("token"))) {
+      setDummy(true)
+    }
   }, [data, user, localStorage.getItem("token")]);
 
   const handleLogout = () => {
