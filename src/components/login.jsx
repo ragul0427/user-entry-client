@@ -25,7 +25,7 @@ function Login() {
       if(err.response.data.message=="Password is incorrect"){
         notification.error({message:err.response.data.message})
       }
-      if(err.response.data.message=="User not found"){
+      if(err.response.data.message=="User not found Register first..."){
         notification.error({message:err.response.data.message})
       }
     }
