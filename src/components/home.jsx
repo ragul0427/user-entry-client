@@ -65,35 +65,35 @@ function Home() {
   console.log(user, "erknekjrkjen");
   const columns = [
     {
-      title: <p className="text-[10px]">FirstName</p>,
+      title: <p className="text-[10px] !w-[15vw] sm:!text-[14px] md:!text-[16px]">FirstName</p>,
       dataIndex: "firstName",
       key: "firstName",
       render: (name) => {
-        return <p className="text-[10px] !w-[10vw]">{name}</p>;
+        return <p className="text-[8px] !w-[15vw] sm:!text-[12px] md:!text-[14px]">{name}</p>;
       },
     },
     {
-      title: <p className="text-[10px]">LastName</p>,
+      title: <p className="text-[10px] !w-[15vw] sm:!text-[14px] md:!text-[16px]">LastName</p>,
       dataIndex: "lastName",
       key: "lastName",
       render: (name) => {
-        return <p className="text-[10px] !w-[8vw]">{name}</p>;
+        return <p className="text-[8px] !w-[15vw] sm:!text-[12px] md:!text-[14px]">{name}</p>;
       },
     },
     {
-      title: <p className="text-[10px]">Email</p>,
+      title: <p className="text-[10px] !w-[15vw] sm:!text-[14px] md:!text-[16px]">Email</p>,
       dataIndex: "email",
       key: "email",
       render: (name) => {
-        return <p className="text-[10px] !w-[16vw]">{name}</p>;
+        return <p className="text-[8px] !w-[15vw] sm:!text-[12px] md:!text-[14px] ">{name}</p>;
       },
     },
     {
-      title: <p className="text-[10px] !w-[10vw]">Phone</p>,
+      title: <p className="text-[10px] !w-[15vw] sm:!text-[14px] md:!text-[16px]">Phone</p>,
       dataIndex: "phone",
       key: "phone",
       render: (name) => {
-        return <p className="text-[10px]">{name}</p>;
+        return <p className="text-[8px] !w-[15vw] sm:!text-[12px] md:!text-[14px]">{name}</p>;
       },
     },
   ];
@@ -120,7 +120,7 @@ function Home() {
           <div>Loading...</div>
         </div>
       ) : (
-        <Table dataSource={User} columns={columns} pagination={false} scroll={{x:10}}/>
+        <Table dataSource={User} columns={columns} pagination={false} scroll={{x:10}} className="md:w-[90vw] m-auto pt-5"/>
       )}
     </div>
   );
