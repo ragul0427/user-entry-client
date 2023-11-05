@@ -10,7 +10,7 @@ function Register() {
 
   const handleFinish = async (values) => {
     try {
-      await axios.post("http://localhost:8080/createuser", values);
+      await axios.post(`${process.env.REACT_APP_URL}/createuser`, values);
       notification.success({message:"Register Successfully lets login"})
       navigate("/login")
     } catch (err) {
