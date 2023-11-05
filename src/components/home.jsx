@@ -65,24 +65,36 @@ function Home() {
   console.log(user, "erknekjrkjen");
   const columns = [
     {
-      title: "FirstName",
+      title: <p className="text-[10px]">FirstName</p>,
       dataIndex: "firstName",
       key: "firstName",
+      render: (name) => {
+        return <p className="text-[10px] !w-[10vw]">{name}</p>;
+      },
     },
     {
-      title: "LastName",
+      title: <p className="text-[10px]">LastName</p>,
       dataIndex: "lastName",
       key: "lastName",
+      render: (name) => {
+        return <p className="text-[10px] !w-[8vw]">{name}</p>;
+      },
     },
     {
-      title: "Email",
+      title: <p className="text-[10px]">Email</p>,
       dataIndex: "email",
       key: "email",
+      render: (name) => {
+        return <p className="text-[10px] !w-[16vw]">{name}</p>;
+      },
     },
     {
-      title: "Phone",
+      title: <p className="text-[10px] !w-[10vw]">Phone</p>,
       dataIndex: "phone",
       key: "phone",
+      render: (name) => {
+        return <p className="text-[10px]">{name}</p>;
+      },
     },
   ];
 
@@ -108,7 +120,7 @@ function Home() {
           <div>Loading...</div>
         </div>
       ) : (
-        <Table dataSource={User} columns={columns} pagination={false} />
+        <Table dataSource={User} columns={columns} pagination={false} scroll={{x:10}}/>
       )}
     </div>
   );
